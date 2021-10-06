@@ -1,0 +1,233 @@
+<div id="Banner-{{ section.id }}">
+<div class="uk-position-relative uk-visible-toggle uk-cover-container" tabindex="-1" uk-slideshow="animation: {{ section.settings.animation }};autoplay: true;">
+    <ul class="uk-slideshow-items" uk-height-viewport{% if section.settings.height != empty %}="offset-bottom:{{ section.settings.height }}"{% endif %}>
+      {%- for block in section.blocks -%}
+        <li>
+            <div class="uk-position-cover{% if section.settings.ken_burns %} uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left{% endif %}">
+              <img
+              srcset="{%- if block.settings.image.width >= 375 -%}{{ block.settings.image | img_url: '375x' }} 375w,{%- endif -%}
+                {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
+                {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
+                {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
+                {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
+                {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
+                {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
+              src="{{ block.settings.image | img_url: '1500x' }}"
+              loading="lazy"
+              alt="{{ block.settings.image.alt | escape }}"
+              uk-cover
+              >
+                <div class="hero-overlay uk-position-cover"></div>
+            </div>
+            <div class="uk-position-{{ section.settings.position }} uk-position-large{% if section.settings.dark_text %} uk-dark{% else %} uk-light{% endif %}">
+              <div class="uk-flex uk-flex-center">
+                <div class="uk-transition-{{ section.settings.transition }}">
+                  {% if block.settings.heading != blank %}
+                  <h2>{{ block.settings.heading }}</h2>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+        </li>
+        {%- endfor -%}
+    </ul>
+    <div class="{% if section.settings.dark_text %} uk-dark{% else %} uk-light{% endif %}">
+      <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+      <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    </div>
+</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Image Slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Image height",
+      "default": "viewport",
+      "options": [
+        {
+          "value": "viewport",
+          "label": "Full screen"
+        },
+        {
+          "value": "20",
+          "label": "Large"
+        },
+        {
+          "value": "50",
+          "label": "Medium"
+        },
+        {
+          "value": "70",
+          "label": "Small"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "default": "center",
+      "label": "Text position",
+      "id": "position",
+      "options": [
+        {
+          "value": "bottom-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "center-right",
+          "label": "Center right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "center-left",
+          "label": "Center left"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "default": "fade",
+      "label": "Animation",
+      "id": "animation",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale",
+          "label": "Scale"
+        },
+        {
+          "value": "pull",
+          "label": "Pull"
+        },
+        {
+          "value": "push",
+          "label": "Push"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "default": "fade",
+      "label": "Text transition",
+      "id": "transition",
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "scale-up",
+          "label": "Scale up"
+        },
+        {
+          "value": "scale-down",
+          "label": "Scale down"
+        },
+        {
+          "value": "slide-top",
+          "label": "Slide top"
+        },
+        {
+          "value": "slide-left",
+          "label": "Slide left"
+        },
+        {
+          "value": "slide-right",
+          "label": "Slide right"
+        },
+        {
+          "value": "slide-bottom",
+          "label": "Slide bottom"
+        },
+        {
+          "value": "slide-top-small",
+          "label": "Slide top small"
+        },
+        {
+          "value": "slide-left-small",
+          "label": "Slide left small"
+        },
+        {
+          "value": "slide-right-small",
+          "label": "Slide right small"
+        },
+        {
+          "value": "slide-bottom-small",
+          "label": "Slide bottom small"
+        },
+        {
+          "value": "slide-top-medium",
+          "label": "Slide top medium"
+        },
+        {
+          "value": "slide-left-medium",
+          "label": "Slide left medium"
+        },
+        {
+          "value": "slide-right-medium",
+          "label": "Slide right medium"
+        },
+        {
+          "value": "slide-bottom-medium",
+          "label": "Slide bottom medium"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "default": false,
+      "label": "Enable Ken Burns effect",
+      "id": "ken_burns"
+    },
+    {
+      "type": "checkbox",
+      "default": false,
+      "label": "Dark text",
+      "id": "dark_text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider"
+    }
+  ]
+}
+{% endschema %}
