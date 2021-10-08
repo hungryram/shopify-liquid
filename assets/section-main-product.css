@@ -56,7 +56,7 @@
 .shopify-payment-button__button {
   border-radius: 0;
   font-family: inherit;
-  min-height: 4.6rem;
+  padding: 0.7rem 3rem .7em;
 }
 
 .shopify-payment-button__button [role="button"].focused,
@@ -80,7 +80,6 @@
   background-color: rgba(var(--color-button), var(--alpha-button-background));
   box-shadow: 0 0 0 0.1rem rgba(var(--color-button), var(--alpha-button-border));
   color: rgb(var(--color-button-text));
-  font-size: 1.4rem;
   line-height: 1.2;
   letter-spacing: 0.07rem;
 }
@@ -92,12 +91,10 @@
 .shopify-payment-button__button--unbranded:hover,
 .shopify-payment-button__button--unbranded:hover:not([disabled]) {
   background-color: rgba(var(--color-button), var(--alpha-button-background));
-  box-shadow: 0 0 0 0.2rem rgba(var(--color-button), var(--alpha-button-border));
 }
 
 .shopify-payment-button__more-options {
   margin: 1.6rem 0 1rem;
-  font-size: 1.2rem;
   line-height: 1.5;
   letter-spacing: 0.05rem;
   text-decoration: underline;
@@ -117,7 +114,6 @@
 .product-form__error-message-wrapper:not([hidden]) {
   display: flex;
   align-items: flex-start;
-  font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -171,7 +167,6 @@ fieldset.product-form__input .form__label {
   display: inline-block;
   margin: 0.7rem 0.5rem 0.2rem 0;
   padding: 1rem 2rem;
-  font-size: 1.4rem;
   letter-spacing: 0.1rem;
   line-height: 1;
   text-align: center;
@@ -251,7 +246,6 @@ fieldset.product-form__input .form__label {
 }
 
 .shopify-payment-button__button {
-  font-size: 1.5rem;
   letter-spacing: 0.1rem;
 }
 
@@ -317,9 +311,6 @@ a.product__text {
 }
 
 @media screen and (min-width: 750px) {
-  .product__info-container .price--on-sale .price-item--regular {
-    font-size: 1.6rem;
-  }
 
   .product__info-container > *:first-child {
     margin-top: 0;
@@ -749,17 +740,12 @@ a.product__text {
 }
 
 .product-popup-modal__button {
-  font-size: 1.6rem;
   padding-right: 1.3rem;
   padding-left: 0;
   height: 4.4rem;
   text-underline-offset: 0.3rem;
   text-decoration-thickness: 0.1rem;
   transition: text-decoration-thickness var(--duration-short) ease;
-}
-
-.product-popup-modal__button:hover {
-  text-decoration-thickness: 0.2rem;
 }
 
 .product-popup-modal__content-info {

@@ -22,7 +22,7 @@
         </div>
       </div>
     {%- else -%}
-      <div class="collection page-width">
+      <div class="collection">
         <div class="collection uk-grid uk-child-width-1-4" id="product-grid" data-id="{{ section.id }}">
           {%- for product in collection.products -%}
               {% render 'product-card',
